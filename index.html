@@ -116,6 +116,7 @@
     const cd = $('.cd')
     const player = $('.player')
     const playBtn = $('.btn-toggle-play')
+    const progress = $('#progress')
 
 
 
@@ -216,16 +217,35 @@
         //xử lý khi click play
         playBtn.onclick = function () {
           if (_this.isPlaying) {
-            _this.isPlaying = false
             audio.pause()
-            player.classList.remove('playing')
           } else {
-            _this.isPlaying = true
-            audio.play()
-            player.classList.add('playing')
+            audio.play()           
           }
         }
+        //Khi song được play  
+        audio.onplay = function(){
+          _this.isPlaying = true;
+          player.classList.add('playing');
+        }
 
+        //khi song bị pause
+        audio.onpause = function(){
+          _this.isPlaying = false;
+          player.classList.remove('playing')
+        }
+
+        // khi tiến độ bài hát thay đổi
+        audio.ontimeupdate = function(){
+          if(audio.duration){
+            const progresspercent = Math.floor(audio.currentTime / audio.duration * 100)
+            progress.value = progresspercent
+          }
+        }
+        // Xử lý khi tua song
+        progress.onchange = function(e){
+          const seekTime = e.target.value / 100 * audio.duration
+          audio.currentTime = seekTime
+        }
       },
 
 
