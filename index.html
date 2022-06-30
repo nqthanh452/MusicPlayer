@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Music player</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+  <div class="player">
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <!-- Header -->
+      <header>
+        <h4>Now playing:</h4>
+        <h2>String 57th & 9th</h2>
+      </header>
+
+      <!-- CD -->
+      <div class="cd">
+        <div class="cd-thumb" style="background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg')">
+        </div>
+      </div>
+
+      <!-- Control -->
+      <div class="control">
+        <div class="btn btn-repeat">
+          <i class="fas fa-redo"></i>
+        </div>
+        <div class="btn btn-prev">
+          <i class="fas fa-step-backward"></i>
+        </div>
+        <div class="btn btn-toggle-play">
+          <i class="fas fa-pause icon-pause"></i>
+          <i class="fas fa-play icon-play"></i>
+        </div>
+        <div class="btn btn-next">
+          <i class="fas fa-step-forward"></i>
+        </div>
+        <div class="btn btn-random">
+          <i class="fas fa-random"></i>
+        </div>
+      </div>
+
+      <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+
+      <audio id="audio" src=""></audio>
+    </div>
+
+    <!-- Playlist -->
+    <div class="playlist">
+      <div class="song">
+        <div class="thumb" style="background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg')">
+        </div>
+        <div class="body">
+          <h3 class="title">Music name</h3>
+          <p class="author">Singer</p>
+        </div>
+        <div class="option">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+      </div>
+      <div class="song">
+        <div class="thumb" style="background-image: url('./img/afterdark.jpg')">
+        </div>
+        <div class="body">
+          <h3 class="title">Music name</h3>
+          <p class="author">Singer</p>
+        </div>
+        <div class="option">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+      </div>
+      <div class="song">
+        <div class="thumb" style="background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg')">
+        </div>
+        <div class="body">
+          <h3 class="title">Music name</h3>
+          <p class="author">Singer</p>
+        </div>
+        <div class="option">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <script>
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
+    const heading = $('header h2')
+    const cdThumb = $('.cd-thumb')
+    const audio = $('#audio')
+    const cd = $('.cd')
+    const player = $('.player')
+    const playBtn = $('.btn-toggle-play')
+
+
+
+    const app = {
+      currentIndex: 0,
+      isPlaying: false,
+      songs: [{
+          name: 'After dark',
+          singer: 'Aimer',
+          path: './music/afterdark.mp3',
+          image: './img/afterdark.jpg'
+        },
+        {
+          name: 'Cho em',
+          singer: 'Thuỳ Chi',
+          path: './music/choem.mp3',
+          image: './img/choem.jpg'
+        },
+        {
+          name: 'conme',
+          singer: 'Koo',
+          path: './music/conme.mp3',
+          image: './img/conme.jpg'
+        },
+        {
+          name: 'Khi nào me mới yêu anh',
+          singer: 'Aimer',
+          path: './music/afterdark.mp3',
+          image: './img/afterdark.jpg'
+        },
+        {
+          name: 'Phía sau em',
+          singer: 'Binz - Kay Trần',
+          path: './music/phiasauem.mp3',
+          image: './img/phiasauem.jpg'
+        },
+        {
+          name: 'Phố Vắng',
+          singer: 'Lai Xuân Tú',
+          path: './music/phovang.mp3',
+          image: './img/phovang.jpg'
+        },
+        {
+          name: 'Thì Thôi',
+          singer: 'Reddy',
+          path: './music/thithoi.mp3',
+          image: './img/thithoi.jpg'
+        },
+        {
+          name: 'Vài giây nữa thôi',
+          singer: 'Reddy',
+          path: './music/vaigiaynuathoi.mp3',
+          image: './img/vaigiaynuathoi.jpg'
+        }
+      ],
+      render: function () {
+        const htmls = this.songs.map(song => {
+          return `
+              <div class="song">
+                <div class="thumb" style="background-image: url('${song.image}')">
+                </div>
+                <div class="body">
+                  <h3 class="title">${song.name}</h3>
+                  <p class="author">${song.singer}</p>
+                </div>
+              <div class="option">
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+              </div>
+              `
+        })
+
+        $('.playlist').innerHTML = htmls.join('')
+
+      },
+
+      defineProperties: function () {
+        Object.defineProperty(this, 'currentsong', {
+          get: function () {
+            return this.songs[this.currentIndex]
+          }
+        })
+      },
+
+
+      handleEvents: function () {
+        const _this = this
+        const cdWidth = cd.offsetWidth
+        // xử lý phóng to/ th nhỏ CD
+        document.onscroll = function () {
+          const scrollTop = document.documentElement.scrollTop
+          const newcdWidth = cdWidth - scrollTop
+
+          cd.style.width = newcdWidth > 0 ? newcdWidth + 'px' : 0
+          cd.style.opacity = newcdWidth / cdWidth
+        }
+
+        //xử lý khi click play
+        playBtn.onclick = function () {
+          if (_this.isPlaying) {
+            _this.isPlaying = false
+            audio.pause()
+            player.classList.remove('playing')
+          } else {
+            _this.isPlaying = true
+            audio.play()
+            player.classList.add('playing')
+          }
+        }
+
+      },
+
+
+
+      loadCurrentSong: function () {
+
+
+        heading.textContent = this.currentsong.name;
+        cdThumb.style.backgroundImage = `url('${this.currentsong.image}')`;
+        audio.src = this.currentsong.path;
+
+
+      },
+      start: function () {
+        this.defineProperties()
+        this.handleEvents()
+        this.render()
+        this.loadCurrentSong()
+
+      }
+    }
+
+    app.start()
+  </script>
+</body>
+
+</html>
