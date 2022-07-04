@@ -16,6 +16,7 @@
   html {
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+
   }
   
   .player {
@@ -130,7 +131,7 @@
   
   /* PLAYLIST */
   .playlist {
-    margin-top: 408px;
+    margin-top: 500px;
     padding: 12px;
   }
   
@@ -187,3 +188,15 @@
     font-size: 18px;
   }
   
+#titleTN{
+  animation: blinker 1s linear infinite;
+  background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  padding-bottom:20px;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

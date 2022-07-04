@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" >
 
 <head>
   <title>Music player</title>
@@ -18,12 +18,15 @@
   <link rel="stylesheet" href="./css/main.css">
 </head>
 
+
+
 <body>
   <div class="player">
     <!-- Dashboard -->
     <div class="dashboard">
       <!-- Header -->
       <header>
+        <h1 id="titleTN">TN tặng NC web nghe nhạc Trung giải trí</h1>
         <h4>Now playing:</h4>
         <h2>String 57th & 9th</h2>
       </header>
@@ -132,52 +135,89 @@
       isRepeat: false,
       config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
       songs: [{ 
-          name: 'After dark',
-          singer: 'Aimer',
-          path: './music/afterdark.mp3',
-          image: './img/afterdark.jpg'
+          name: 'Anh ấy nói',
+          singer: 'Từ Vi',
+          path: './music/anhaynoi.mp3',
+          image: './img/anhaynoi.jpg'
         },
         {
-          name: 'Cho em',
-          singer: 'Thuỳ Chi',
-          path: './music/choem.mp3',
-          image: './img/choem.jpg'
+          name: 'Bạch nguyệt quang và nốt chu sa',
+          singer: 'Đại Từ',
+          path: './music/bachnguyetquangvanotchusa.mp3',
+          image: './img/bachnguyetquangvanotchusa.jpg'
         },
         {
-          name: 'conme',
-          singer: 'Koo',
-          path: './music/conme.mp3',
-          image: './img/conme.jpg'
+          name: 'Đa nghi',
+          singer: 'Nhậm Nhiên',
+          path: './music/benhdanghi.mp3',
+          image: './img/benhdanghi.jpg'
         },
         {
-          name: 'Khi nào em mới yêu anh',
-          singer: 'Aimer',
-          path: './music/khinaoemmoiyeuanh.mp3',
-          image: './img/khinaoemmoiyeuanh.jpg'
+          name: 'Đảo không người',
+          singer: 'Nhậm Nhiên',
+          path: './music/daokhongnguoi.mp3',
+          image: './img/daokhongnguoi.jpg'
         },
         {
-          name: 'Phía sau em',
-          singer: 'Binz - Kay Trần',
-          path: './music/phiasauem.mp3',
-          image: './img/phiasauem.jpg'
+          name: 'Đông miên',
+          singer: 'Tư Nam',
+          path: './music/dongmien.mp3',
+          image: './img/dongmien.jpg'
         },
         {
-          name: 'Phố Vắng',
-          singer: 'Lai Xuân Tú',
-          path: './music/phovang.mp3',
-          image: './img/phovang.jpg'
+          name: 'Không biết phải làm sao',
+          singer: 'Vương Tĩnh Văn Không Mập',
+          path: './music/khongbietphailamsao.mp3',
+          image: './img/khongbietphailamsao.jpg'
         },
         {
-          name: 'Thì Thôi',
-          singer: 'Reddy',
-          path: './music/thithoi.mp3',
-          image: './img/thithoi.jpg'
+          name: 'Kiêu ngạo',
+          singer: 'En',
+          path: './music/kieungao.mp3',
+          image: './img/kieungao.jpg'
         },
         {
-          name: 'Vài giây nữa thôi',
-          singer: 'Reddy',
-          path: './music/vaigiaynuathoi.mp3',
-          image: './img/vaigiaynuathoi.jpg'
+          name: 'Một triệu khả năng',
+          singer: 'Trương Hàm Vận',
+          path: './music/mottrieukhanang.mp3',
+          image: './img/mottrieukhanang.jpg'
+        },
+        {
+          name: 'Người kế nhiệm',
+          singer: 'Nhậm Nhiên',
+          path: './music/nguoikenhiem.mp3',
+          image: './img/nguoikenhiem.jpg'
+        },
+        {
+          name: 'Người theo đuổi ánh sáng',
+          singer: 'Từ Vi',
+          path: './music/nguoitheoduoianhsang.mp3',
+          image: './img/nguoitheoduoianhsang.jpg'
+        },{
+          name: 'Những năm tháng ấy',
+          singer: 'Hồ Hạ',
+          path: './music/nhungnamthangay.mp3',
+          image: './img/nhungnamthangay.jpg'
+        },{
+          name: 'Nổi gió rồi',
+          singer: 'Châm Thâm',
+          path: './music/noigioroi.mp3',
+          image: './img/noigioroi.jpg'
+        },{
+          name: 'Phi điều và ve sầu',
+          singer: 'Nhậm Nhiên',
+          path: './music/phidieuvesau.mp3',
+          image: './img/phidieuvesau.jpg'
+        },{
+          name: 'Thời không sai lệch',
+          singer: 'Ngải Thần',
+          path: './music/thoikhongsailech.mp3',
+          image: './img/thoikhongsailech.jpg'
+        },{
+          name: 'Vây giữ',
+          singer: 'Vương Tĩnh Văn Không Mập',
+          path: './music/vaygiu.mp3',
+          image: './img/vaygiu.jpg'
         }
       ],
       setconfig: function(key, value){
