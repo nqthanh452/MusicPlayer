@@ -268,7 +268,7 @@
           }
         }
         // Xử lý khi tua song
-        progress.onchange = function (e) {
+        progress.oninput = function (e) {
           const seekTime = e.target.value / 100 * audio.duration
           audio.currentTime = seekTime
         }
