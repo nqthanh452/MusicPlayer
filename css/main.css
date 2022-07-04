@@ -200,3 +200,9 @@
     opacity: 0;
   }
 }
+
+@media(max-width:450px){
+  #titleTN{
+    font-size: 2rem;
+  }
+}
